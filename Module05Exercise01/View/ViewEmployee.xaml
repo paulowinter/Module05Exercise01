@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module05Exercise01.View.ViewEmployee"
+             Shell.NavBarIsVisible="False"
+             Title="View Employee"
+             BackgroundColor="#FCE2E6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Employee Information"
+                   FontSize="Header"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" 
+                   TextColor="#333" />
+
+            <Label x:Name="ConnectionStatusLabel"
+                   Text="{Binding StatusMessage}"
+                   FontSize="18"
+                   HorizontalOptions="Center" 
+                   TextColor="#388E3C" 
+                   Margin="0,5,0,20" />
+
+            <ListView ItemsSource="{Binding EmployeeList}"
+                      SeparatorVisibility="Default"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="15" Margin="5" 
+                                   BorderColor="Transparent" 
+                                   BackgroundColor="White"
+                                   CornerRadius="10"
+                                   HasShadow="True">
+                                <StackLayout Spacing="5">
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold" 
+                                           FontSize="18" />
+                                    <Label Text="{Binding Address}" 
+                                           FontSize="15" 
+                                           TextColor="#444"/>
+                                    <Label Text="{Binding Email}" 
+                                           FontSize="15" 
+                                           TextColor="#444"/>
+                                    <Label Text="{Binding ContactNo}" 
+                                           FontSize="15" 
+                                           TextColor="#444"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Load Data"
+                    Command="{Binding LoadDataCommand}"
+                    HorizontalOptions="Center" 
+                    BackgroundColor="#F2B2C6"
+                    TextColor="White"
+                    FontSize="16"
+                    Padding="12"
+                    CornerRadius="8"
+                    WidthRequest="150"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
